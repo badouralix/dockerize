@@ -1,0 +1,20 @@
+# dockerize, the tiny docker build wrapper
+#
+# Copyright (C) 2016 Ayaz BADOURALY <ayaz.badouraly@via.ecp.fr>
+#
+# This work is free.  You can redistribute it and/or modify it under the terms of
+# the Do What The Fuck You Want To Public License, Version 2, as published by Sam
+# Hocevar.  See  the COPYING file  or  http://www.wtfpl.net/  for  more  details.
+#
+
+dockerize () {
+	if [ $# -eq 0 ]; then
+		echo "Usage: $0 name[:tag]"
+		return 1
+	fi
+
+	local DOCKER_PREFIX=${DOCKER_PREFIX:-"$USER-local"}
+	docker build -t $DOCKER_PREFIX/$1 .
+}
+
+# vim: ft=sh
