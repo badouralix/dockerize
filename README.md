@@ -6,7 +6,7 @@ dockerize
 It is designed to be as smallest as possible.
 Thus, the ONLY use case it is intended to be used for is :
 
-- name of the Dockerfile is the default one : 'PATH/Dockerfile'
+- name of the Dockerfile is the default one : `PATH/Dockerfile`
 - context is current working directory : `.`
 - no build-arg
 - no cpu limit nor memory limit
@@ -25,23 +25,23 @@ source /path/to/dockerize
 
 ## Usage
 
-### Use default name:tag
+### Use default _name:tag_
 
 Coming soon...
 
-### Set your own name:tag
+### Set your own _name:tag_
 
 To build an image with the default tag :
 
 ```
-cd /path/to/your/Dockerfile
+cd /path/to/your/Dockerfile/
 dockerize <name>
 ```
 
 A custom tag can be specified as followed :
 
 ```
-cd /path/to/your/Dockerfile
+cd /path/to/your/Dockerfile/
 dockerize <name>:<tag>
 ```
 
