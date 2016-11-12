@@ -8,13 +8,28 @@
 #
 
 dockerize () {
+	
+	local DOCKER_PREFIX=${DOCKER_PREFIX:-"$USER-local"}
+	local NAME=
+
 	if [ $# -eq 0 ]; then
-		echo "Usage: $0 name[:tag]"
-		return 1
+		# if no argument is passed, docker image is built with the current directory name
+		NAME=${PWD##*/}
+
+		# NAME may still be empty ( especially if PWD is / )
+		if [ -z "$NAME" ]; then
+			echo "A failure occured when determining automatically a name for the image... Please provide a name manually"
+			return 1
+		else
+			echo "Name of the image automatically set to $DOCKER_PREFIX/$NAME"
+		fi
+
+	else
+		# else, the name of the docker image is set accordance with the first argument
+		NAME=$1
 	fi
 
-	local DOCKER_PREFIX=${DOCKER_PREFIX:-"$USER-local"}
-	docker build -t $DOCKER_PREFIX/$1 .
+	docker build -t $DOCKER_PREFIX/$NAME .
 }
 
 # vim: ft=sh

@@ -27,7 +27,12 @@ source /path/to/dockerize
 
 ### Use default _name:tag_
 
-Coming soon...
+If no argument is passed, `dockerize` will build an image with the current directory name as name :
+
+```
+cd /path/to/awesome_directory_containing_dockerfile
+dockerize                                             # will build with `-t $USER-local/awesome_directory_containing_dockerfile`
+```
 
 ### Set your own _name:tag_
 
